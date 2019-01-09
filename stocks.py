@@ -11,28 +11,36 @@ def stock_value():
   companyOwned = []
   for item in purchases:
     name = stockDict.get(item[0])
-    print("I purchased " + str(item[1]) + " shares of " + name + " stock for " + str(item[3]) + " on " + item[2] + ".")
+    print("I purchased " + str(item[1]) + " shares of " + name + " stock for $" + str(item[3]) + ".00 on " + item[2] + ".")
     total += item[1] * item[3]
     notIn = 1
     for companyName in companyOwned:
-
-      if item[0] == companyName[0]:
-        print("inside")
+      if item[0] == companyName[0][0]:
+        item = [item]
         oldName = companyOwned.index(companyName)
         temp = [companyName, item]
         companyOwned[oldName] = temp
         notIn = 0
     if notIn == 1:
+      item = [item]
       companyOwned.append(item)
   for itemInOwned in companyOwned:
-    if itemInOwned is list:
-      for newItem in itemInOwned:
-        print("inside list")
-        print(newItem)
-    else:
-      coName = stockDict.get(itemInOwned[0])
-      print("----------" + str(itemInOwned[0][0]) + "-" + str(coName) + "-" + "----------")
-      print(itemInOwned)
+      coName = ""
+      if len(itemInOwned) > 1:
+        coName = stockDict.get(itemInOwned[0][0] [0])
+        stockTick = itemInOwned[0][0][0]
+        printList = ""
+        for one in itemInOwned:
+          for indiItem in one:
+            printList += str(indiItem)
+      else:
+        coName = stockDict.get(itemInOwned[0][0])
+        stockTick = itemInOwned[0][0]
+        printList = itemInOwned[0]
+      print()
+      print("----------" + stockTick + "-" + coName + "-" + "----------")
+      print(printList)
+  print()
   print("Total value of stocks purchased is $" + str(total) + ".")
 
 
