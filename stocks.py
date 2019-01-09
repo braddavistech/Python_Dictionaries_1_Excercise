@@ -31,7 +31,7 @@ def stock_value():
         print(newItem)
     else:
       coName = stockDict.get(itemInOwned[0])
-      print("----------" + str(itemInOwned[0][0]) + "----------")
+      print("----------" + str(itemInOwned[0][0]) + "-" + str(coName) + "-" + "----------")
       print(itemInOwned)
   print("Total value of stocks purchased is $" + str(total) + ".")
 
